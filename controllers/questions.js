@@ -16,3 +16,10 @@ module.exports = (dataLoader) => {
 
       .catch(err => res.status(400).json(err));
   });
+
+  /*
+  Add more requests in here for extra features
+  */
+
+  return boardsController;
+  };

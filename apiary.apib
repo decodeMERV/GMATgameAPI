@@ -1,0 +1,98 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# Gmat
+
+The Gmat API allows the consumers to access questions to a game that helps improve logic and critical reasoning skills.
+
+## Questions  [/questions]
+A question represents a flashcard composed of a question followed by 5 answers to choose from.
+
+### Retrieve a single question [GET /questions/{id}]
+
++ Parameters
+    - id: `128` (number, required) - The ID of the desired question
+
++ Response 200 (application/json)
+    + Headers
+
+            Authorization: token xyz
+
+    + Attributes (singleQuestion)
+
+## Authentication [/auth]
+
+### Create a new user (signup) [POST /auth/users]
++ Request (application/json)
+    + Attributes (AuthData)
+
++ Response 201 (application/json)
+    + Attributes (User)
+
+### Create a new session (login) [POST /auth/sessions]
++ Request (application/json)
+    + Attributes (AuthData)
+
++ Response 201 (application/json)
+    + Attributes (Session)
+
+### Delete a session (logout) [DELETE /auth/sessions]
+Requesting this endpoint will delete the session associated with the token in the `Authorization` header.
+
++ Request (application/json)
+    + Headers
+
+            Authorization: token xyz
+
++ Response 204
+
+
+### Retrieve current user [GET /auth/me]
+Requesting this endpoint with an Authorization token will return the user that this token belongs to.
+
++ Request
+    + Headers
+
+            Authorization: token xyz
+
++ Response 200 (application/json)
+    + Attributes (User)
+
+
+
+
+
+# Data Structures
+
+## Timestamps (object)
+- createdAt: `2015-01-20T09:48:32.066Z` (string) - The creation date
+- updatedAt: `2017-05-04T14:29:42.490Z` (string) - The last update date
+
+## singleQuestion (object)
+- id: `128` (number) - The unique ID of the board,
+- title: `What's the best argument to support this theory?` (string) - The question asked
+- answerA: `value for answer A` (string) - One of the possible answers
+- answerB: `value for answer B` (string) - One of the possible answers
+- answerC: `value for answer C` (string) - One of the possible answers
+- answerD: `value for answer D` (string) - One of the possible answers
+- answerE: `value for answer E` (string) - One of the possible answers
+- category: `Math` (string) - The category of the question asked
+- level: 300 (number) - The level of difficulty of the question
+- correctAnswer: `A` (string) - The correct answer for the question
+- include Timestamps
+
+## AuthData (object)
+- email: `matt@gmat.com` (string) - The email that will be used as a login username
+- password: `mattmattmatt` (string) - The desired password for the new user
+
+
+## User (object)
+- id: `128` (number) - The unique ID of the user
+- email: `vincent@gmat.com` (string) - The email that will be used as a login username
+- interests: `programming and business` (string) - A description of the user's interests
+- photo: `http://1.bp.blogspot.com/-7csc-42fzQE/TrCgKRLHcfI/AAAAAAAAAfE/G5QwbyXLbUQ/s320/57523-chi_super.jpg` (string) - The profile pic of the user
+- userRank: `beginner` (string) - The rank of the user
+- Include Timestamps
+
+## Session (object)
+- token: `uep52qo8wfyh97b24fjafjewi9bb0r24` (string) - The session token

@@ -7,11 +7,11 @@ const morgan = require('morgan');
 const checkLoginToken = require('./lib/check-login-token.js');
 
 // Data loader
-const gmaxDataLoader = require('./lib/gmax.js');
+const GmaxDataLoader = require('./lib/gmax.js');
 
 // Controllers
 const authController = require('./controllers/auth.js');
-const questionController = require('./controllers/questions.js'); //needs to be modified?
+const questionController = require('./controllers/questions.js');
 
 // Database / data loader initialization with SQL
 const connection = mysql.createPool({
@@ -20,7 +20,7 @@ const connection = mysql.createPool({
   database: 'gmax'
 });
 
-const dataLoader = new DashboardlyDataLoader(connection);
+const dataLoader = new GmaxDataLoader(connection);
 
 // Express initialization
 const app = express();

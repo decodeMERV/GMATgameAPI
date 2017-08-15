@@ -1,4 +1,5 @@
 const express = require('express');
+const util = require('../lib/util.js');
 
 const onlyLoggedIn = require('../lib/only-logged-in'); //ensure this link is correct
 
@@ -17,10 +18,10 @@ authController.post('/users', (req, res) => {
     email: req.body.email,
     password: req.body.password,
     interests: req.body.interests
-    
+
   })
     .then(user => res.status(201).json(user))
-    .catch(err => res.status(400).json(err));
+    .catch(err => util.sendErrorResponse(res, err));
 });
 
 
@@ -40,7 +41,7 @@ authController.delete('/sessions', onlyLoggedIn, (req, res) => {
 
   dataLoader.deleteToken(req.sessionToken)
     .then(() => res.status(204).end())
-    .catch(err => res.status(400).json(err));
+    .catch(err => util.sendErrorResponse(res, err));
 });
 
 
@@ -50,7 +51,7 @@ authController.get('/me', onlyLoggedIn, (req, res) => {
   if (req.sessionToken) {
     dataLoader.getUserFromSession(req.sessionToken)
       .then(data => res.json(data))
-      .catch(err => res.status(400).json(err));
+      .catch(err => util.sendErrorResponse(res, err));
   } else {
     res.status(401).json({error: 'Invalid session token, try signing in again!'});
   }

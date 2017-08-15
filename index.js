@@ -11,7 +11,7 @@ const gmaxDataLoader = require('./lib/gmax.js');
 
 // Controllers
 const authController = require('./controllers/auth.js');
-const boardsController = require('./controllers/boards.js'); //needs to be modified?
+const questionController = require('./controllers/questions.js'); //needs to be modified?
 
 // Database / data loader initialization with SQL
 const connection = mysql.createPool({
@@ -19,6 +19,7 @@ const connection = mysql.createPool({
   password: 'Alwaysbecrushing123', //for testing purposes, change this info to your local SQL password
   database: 'gmax'
 });
+
 const dataLoader = new DashboardlyDataLoader(connection);
 
 // Express initialization
@@ -38,7 +39,7 @@ app.use(function(req, res, next) {
 })
 
 app.use('/auth', authController(dataLoader));
-app.use('/questions', boardsController(dataLoader));
+app.use('/questions', questionController(dataLoader));
 
 // Start the server
 const port = process.env.PORT || 3000;

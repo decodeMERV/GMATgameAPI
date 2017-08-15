@@ -3,11 +3,11 @@ const express = require('express');
 const onlyLoggedIn = require('../lib/only-logged-in');
 
 module.exports = (dataLoader) => {
-  const boardsController = express.Router();
+  const questionController = express.Router();
 
 
   // Retrieve a single question
-  boardsController.get('/questions/:id', onlyLoggedIn, (req, res) => {
+  questionController.get('/questions/:id', onlyLoggedIn, (req, res) => {
 
     dataLoader.getQuestion(req.params.id)
       .then(data => res.json(data[0]))
@@ -21,5 +21,5 @@ module.exports = (dataLoader) => {
   Add more requests in here for extra features
   */
 
-  return boardsController;
+  return questionController;
   };

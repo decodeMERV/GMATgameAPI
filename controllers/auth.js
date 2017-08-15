@@ -13,8 +13,11 @@ module.exports = (dataLoader) => {
 authController.post('/users', (req, res) => {
 
   dataLoader.createUser({
+    username: req.body.username,
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    interests: req.body.interests
+    
   })
     .then(user => res.status(201).json(user))
     .catch(err => res.status(400).json(err));

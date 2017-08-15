@@ -51,9 +51,11 @@ ALTER TABLE questions MODIFY COLUMN title VARCHAR(500);
 
 INSERT INTO questions (title) VALUES ('Dr. Larson: Sleep deprivation is the cause of many social ills, ranging from irritability to potentially dangerous instances of impaired decision making. Most people today suffer from sleep deprivation to some degree. Therefore we should restructure the workday to allow people flexibility in scheduling their work hours.');
 
-INSERT INTO questions (title, answerA, answerB, answerC, answerD, answerE, category, level, correctAnswer)
+INSERT INTO questions (title, answerA, answerB, answerC, answerD, answerE, level, correctAnswer) VALUES ('A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost?', '$0.10', '$0.05', '$0.20', '$1.00', 'None of the above', '200', 'b');
 
-VALUES ('A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost?', '$0.10', '$0.05', '$0.20', '$1.00', 'None of the above, 'critical reasoning', '200', 'b');
+INSERT INTO questions (title, answerA, answerB, answerC, answerD, answerE, level, correctAnswer) VALUES ('Solve: 5 + 5V5/ 10 + V500', '1/2', '2', '1 + V5', '1 + 5V5', '5 + V5', '200', 'A');
+
+DELETE FROM questions WHERE id=5;
 
 NEED TO VERIFY THIS ONE WITH ZIAD
 

@@ -12,8 +12,6 @@ module.exports = (dataLoader) => {
     dataLoader.getQuestion(req.params.id)
       .then(data => res.json(data[0]))
 
-      //need to parse this for the body and headers API contract?
-
       .catch(err => res.status(400).json(err));
   });
 

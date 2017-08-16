@@ -1,5 +1,6 @@
 const express = require('express');
 const mysql = require('promise-mysql');
+const cors = require('cors');
 
 // Express middleware
 const bodyParser = require('body-parser');
@@ -16,7 +17,7 @@ const questionController = require('./controllers/questions.js');
 // Database / data loader initialization with SQL
 const connection = mysql.createPool({
   user: 'root',
-  password: 'Alwaysbecrushing123', //for testing purposes, change this info to your local SQL password
+  password: 'decodemtl', //for testing purposes, change this info to your local SQL password
   database: 'gmax'
 });
 
@@ -26,17 +27,18 @@ const dataLoader = new GmaxDataLoader(connection);
 const app = express();
 
 app.use(morgan('dev'));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(checkLoginToken(dataLoader));
 
 
 // Set up CORS headers (without using NPM library- more customized this way!)
-app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,POST,PATCH,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
-  next();
-})
+// app.use(function(req, res, next) {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Methods', 'GET,POST,PATCH,DELETE,OPTIONS');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+//   next();
+// })
 
 app.use('/auth', authController(dataLoader));
 app.use('/questions', questionController(dataLoader));

@@ -8,10 +8,10 @@ module.exports = (dataLoader) => {
 
   // Retrieve next question
   questionController.get('/nextQuestion', (req, res) => { //should we put questions/nextQuestion bc *index.js line 44
-    console.log(req, "JUST WANT TO SEE IF IT GETS THERE")
+
     dataLoader.getNextQuestion(req.query.currentLevel, req.query.isCorrect === 'true' ? true : req.query.isCorrect === 'false' ? false : undefined)
       .then(data => res.json(data))
-      .catch(err => util.sendErrorResponse(res, err, 'AHAHAHAHA'));
+      .catch(err => util.sendErrorResponse(res, err));
   });
 
   // // Retrieve a single question

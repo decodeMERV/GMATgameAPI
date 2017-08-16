@@ -39,6 +39,18 @@ CREATE TABLE questions (
 );
 
 /*
+this needs to be reviewed
+*/
+CREATE TABLE category (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(30) NOT NULL,
+  description VARCHAR(100),
+  createdAt DATETIME NOT NULL,
+  updatedAt DATETIME NOT NULL,
+  UNIQUE KEY name (name)
+);
+
+/*
 need to figure this one out
 /*
 CREATE TABLE category (

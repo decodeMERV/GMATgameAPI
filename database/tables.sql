@@ -57,10 +57,12 @@ INSERT INTO questions (title, answerA, answerB, answerC, answerD, answerE, level
 
 DELETE FROM questions WHERE id=5;
 
-NEED TO VERIFY THIS ONE WITH ZIAD
+INSERT INTO questions (title, answerA, answerB, answerC, answerD, answerE, level, correctAnswer) VALUES ('Test Question 2?', 'A', 'B', 'C', 'D', 'E', '300', 'b');
 
-CREATE TABLE PERFORMANCE (
-  userId INT AUTO_INCREMENT PRIMARY KEY,
-  questionId INT NULL,
-);
+INSERT INTO questions (title, answerA, answerB, answerC, answerD, answerE, level, correctAnswer) VALUES ('Test Question 3?', 'A', 'B', 'C', 'D', 'E', '400', 'b');
+
+INSERT INTO questions (title, answerA, answerB, answerC, answerD, answerE, level, correctAnswer) VALUES ('Test Question 4?', 'A', 'B', 'C', 'D', 'E', '300', 'b');
+
+
+
 */

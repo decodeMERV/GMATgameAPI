@@ -38,7 +38,6 @@ CREATE TABLE questions (
   updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-
 CREATE TABLE category (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(30) NOT NULL,
@@ -57,11 +56,6 @@ CREATE TABLE leader_board (
   isCorrect BOOLEAN,
   score INT
 )
-
-
-
-
-
 /*
 
 MOCK DATA

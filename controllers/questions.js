@@ -14,12 +14,6 @@ module.exports = (dataLoader) => {
       .catch(err => util.sendErrorResponse(res, err));
   });
 
-  // // Retrieve a single question
-  // questionController.get('/:id', onlyLoggedIn, (req, res) => {
-  //   dataLoader.getQuestion(req.query.currentLevel, req.query.isCorrect)
-  //     .then(data => res.json(data[0]))
-  //     .catch(err => util.sendErrorResponse(res, err));
-  // });
 
   return questionController;
 };

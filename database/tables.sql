@@ -50,6 +50,11 @@ CREATE TABLE category (
   UNIQUE KEY name (name)
 );
 
+
+
+
+
+
 /*
 need to figure this one out
 /*

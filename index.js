@@ -17,7 +17,7 @@ const questionController = require('./controllers/questions.js');
 // Database / data loader initialization with SQL
 const connection = mysql.createPool({
   user: 'root',
-  password: 'Alwaysbecrushing123', //for testing purposes, change this info to your local SQL password
+  password: 'mad88e', //for testing purposes, change this info to your local SQL password
   database: 'gmax'
   //debug: true
 });

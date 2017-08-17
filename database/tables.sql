@@ -24,12 +24,12 @@ CREATE TABLE sessions (
 
 CREATE TABLE questions (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  title VARCHAR(500) NULL,
-  answerA VARCHAR(50) NULL,
-  answerB VARCHAR(50) NULL,
-  answerC VARCHAR(50) NULL,
-  answerD VARCHAR(50) NULL,
-  answerE VARCHAR(50) NULL,
+  title VARCHAR(2000) NULL,
+  answerA VARCHAR(500) NULL,
+  answerB VARCHAR(500) NULL,
+  answerC VARCHAR(500) NULL,
+  answerD VARCHAR(500) NULL,
+  answerE VARCHAR(500) NULL,
   category INT,
   FOREIGN KEY (category) REFERENCES users (id) ON DELETE CASCADE,
   level ENUM ('200','300','400') DEFAULT '200',
@@ -38,9 +38,21 @@ CREATE TABLE questions (
   updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+
+-- CREATE TABLE leader_board (
+--
+--   id INT AUTO_INCREMENT PRIMARY KEY,
+--   FOREIGN KEY (user) REFERENCES users(id),
+--   FOREIGN KEY (question) REFERENCES questions(id),
+--   FOREIGN KEY (answer) REFERENCES questions(correctAnswer),
+--   isCorrect BOOLEAN,
+--   score INT
+-- )
+
+
 /*
 this needs to be reviewed
-*/
+
 CREATE TABLE category (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(30) NOT NULL,
@@ -52,15 +64,7 @@ CREATE TABLE category (
 
 
 
-
-
-
 /*
-need to figure this one out
-/*
-CREATE TABLE category (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-);
 
 MOCK DATA
 
@@ -79,7 +83,5 @@ INSERT INTO questions (title, answerA, answerB, answerC, answerD, answerE, level
 INSERT INTO questions (title, answerA, answerB, answerC, answerD, answerE, level, correctAnswer) VALUES ('Test Question 3?', 'A', 'B', 'C', 'D', 'E', '400', 'b');
 
 INSERT INTO questions (title, answerA, answerB, answerC, answerD, answerE, level, correctAnswer) VALUES ('Test Question 4?', 'A', 'B', 'C', 'D', 'E', '300', 'b');
-
-
 
 */

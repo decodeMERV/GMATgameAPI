@@ -21,7 +21,5 @@ module.exports = (dataLoader) => {
   //     .catch(err => util.sendErrorResponse(res, err));
   // });
 
-
-
   return questionController;
 };

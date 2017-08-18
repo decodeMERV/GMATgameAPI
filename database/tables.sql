@@ -58,6 +58,8 @@ CREATE TABLE leader_board (
   category INT,
   answer ENUM ('A', 'B', 'C', 'D', 'E'),
   level ENUM ('200','300','400'),
-  score INT,
-  time INT
+  score INT
+
 );
+
+ALTER TABLE leader_board ADD COLUMN time INT  AFTER score;

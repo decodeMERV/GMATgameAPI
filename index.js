@@ -13,6 +13,7 @@ const GmaxDataLoader = require('./lib/gmax.js');
 // Controllers
 const authController = require('./controllers/auth.js');
 const questionController = require('./controllers/questions.js');
+const recordController = require('./controllers/record.js');
 
 // Database / data loader initialization with SQL
 const connection = mysql.createPool({
@@ -43,6 +44,7 @@ app.use(checkLoginToken(dataLoader));
 
 app.use('/auth', authController(dataLoader));
 app.use('/questions', questionController(dataLoader));
+app.use('/record', recordController(dataLoader));
 
 // Start the server
 const port = process.env.PORT || 3000;

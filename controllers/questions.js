@@ -1,6 +1,6 @@
 const express = require('express');
 const util = require('../lib/util.js');
-const onlyLoggedIn = require('../lib/only-logged-in');
+const onlyAdmin = require('../lib/only-admin');
 
 module.exports = (dataLoader) => {
   const questionController = express.Router();
@@ -13,26 +13,16 @@ module.exports = (dataLoader) => {
       .catch(err => util.sendErrorResponse(res, err));
   });
 
-  questionController.post('/insert', onlyLoggedIn, (req, res) => {
-    if (req.user.admin) {
-      dataLoader.insertQuestion(req.body)
-        .then(data => res.status(201).json(data))
-        .catch(() => res.status(400).json({ error: 'Something went wrong when inserting to database' }));
-    }
-    else {
-      return res.status(401).json({ error: 'unauthorized - not logged in' });
-    }
+  questionController.post('/', onlyAdmin, (req, res) => {
+    dataLoader.insertQuestion(req.body)
+      .then(data => res.status(201).json(data))
+      .catch(() => res.status(400).json({ error: 'Something went wrong when inserting to database' }));
   })
 
-  questionController.delete('/delete', onlyLoggedIn, (req, res) => {
-    if (req.user.admin) {
-      dataLoader.deleteQuestion(req.body)
-        .then(data => res.status(200).json(data))
-        .catch(() => res.status(400).json({error: 'Something went wrong when deleting to database' }));
-    }
-    else {
-      return res.status(401).json({ error: 'unauthorized - not logged in' });
-    }
+  questionController.delete('/', onlyAdmin, (req, res) => {
+    dataLoader.deleteQuestion(req.body)
+      .then(data => res.status(200).json(data))
+      .catch(() => res.status(400).json({error: 'Something went wrong when deleting to database' }));
   })
   // // Retrieve a single question
   // questionController.get('/:id', onlyLoggedIn, (req, res) => {

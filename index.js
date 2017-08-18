@@ -18,7 +18,7 @@ const recordController = require('./controllers/record.js');
 // Database / data loader initialization with SQL
 const connection = mysql.createPool({
   user: 'root',
-  password: 'root',
+  password: 'mad88e',
   database: 'gmax'
   // debug: true
 });

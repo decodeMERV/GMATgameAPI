@@ -1,6 +1,5 @@
 const express = require('express');
 const util = require('../lib/util.js');
-
 const onlyLoggedIn = require('../lib/only-logged-in');
 
 module.exports = (dataLoader) => {
@@ -14,7 +13,7 @@ module.exports = (dataLoader) => {
       .catch(err => util.sendErrorResponse(res, err));
   });
 
-  questionController.post('/insert', (req, res) => {
+  questionController.post('/insert', onlyLoggedIn, (req, res) => {
     if (req.user.admin) {
       dataLoader.insertQuestion(req.body)
         .then(data => res.status(201).json(data))
@@ -25,7 +24,7 @@ module.exports = (dataLoader) => {
     }
   })
 
-  questionController.delete('/delete', (req, res) => {
+  questionController.delete('/delete', onlyLoggedIn, (req, res) => {
     if (req.user.admin) {
       dataLoader.deleteQuestion(req.body)
         .then(data => res.status(200).json(data))

@@ -14,6 +14,27 @@ module.exports = (dataLoader) => {
       .catch(err => util.sendErrorResponse(res, err));
   });
 
+  questionController.post('/insert', (req, res) => {
+    if (req.user.admin) {
+      dataLoader.insertQuestion(req.body)
+        .then(data => res.status(201).json(data))
+        .catch(() => res.status(400).json({ error: 'Something went wrong when inserting to database' }));
+    }
+    else {
+      return res.status(401).json({ error: 'unauthorized - not logged in' });
+    }
+  })
+
+  questionController.delete('/delete', (req, res) => {
+    if (req.user.admin) {
+      dataLoader.deleteQuestion(req.body)
+        .then(data => res.status(200).json(data))
+        .catch(() => res.status(400).json({error: 'Something went wrong when deleting to database' }));
+    }
+    else {
+      return res.status(401).json({ error: 'unauthorized - not logged in' });
+    }
+  })
   // // Retrieve a single question
   // questionController.get('/:id', onlyLoggedIn, (req, res) => {
   //   dataLoader.getQuestion(req.query.currentLevel, req.query.isCorrect)

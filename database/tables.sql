@@ -58,7 +58,6 @@ CREATE TABLE leader_board (
   category INT,
   answer ENUM ('A', 'B', 'C', 'D', 'E'),
   level ENUM ('200','300','400'),
-  score INT
-
+  score INT,
+  time INT
 );
-

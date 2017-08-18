@@ -1,7 +1,6 @@
 const express = require('express');
 const util = require('../lib/util.js');
-
-const onlyLoggedIn = require('../lib/only-logged-in');
+const onlyAdmin = require('../lib/only-admin');
 
 module.exports = (dataLoader) => {
   const questionController = express.Router();
@@ -13,6 +12,17 @@ module.exports = (dataLoader) => {
       .catch(err => util.sendErrorResponse(res, err));
   });
 
+  questionController.post('/', onlyAdmin, (req, res) => {
+    dataLoader.insertQuestion(req.body)
+      .then(data => res.status(201).json(data))
+      .catch(() => res.status(400).json({ error: 'Something went wrong when inserting to database' }));
+  })
+
+  questionController.delete('/', onlyAdmin, (req, res) => {
+    dataLoader.deleteQuestion(req.body)
+      .then(data => res.status(200).json(data))
+      .catch(() => res.status(400).json({error: 'Something went wrong when deleting to database' }));
+  })
 
   return questionController;
 };

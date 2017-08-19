@@ -5,7 +5,7 @@ FORMAT: 1A
 
 The Gmat API allows the consumers to access questions to a game that helps improve logic and critical reasoning skills.
 
-##  Next Question  [/nextQuestion]
+##  Next Question  [/question]
 A question represents a flashcard composed of a question followed by 5 answers to choose from.
 
 ### Retrieve a single question [GET /nextQuestion{?currentLevel,isCorrect}]
@@ -20,6 +20,17 @@ A question represents a flashcard composed of a question followed by 5 answers t
             Authorization: token xyz
 
     + Attributes (singleQuestion)
+
+### Create a new question [POST /question]
++ Request (application/json)
+    + Headers
+
+            Authorization: token xyz
+    + Attributes (insQuestion)
+
+
++ Response 201 (application/json)
+    + Attributes (queryGood)
 
 ## Authentication [/auth]
 
@@ -102,3 +113,18 @@ Requesting this endpoint with an Authorization token will return the user that t
 
 ## Session (object)
 - token: `uep52qo8wfyh97b24fjafjewi9bb0r24` (string) - The session token
+
+## insQuestion (object)
+- title: `What's a monkey's fur color` (string) - The question asked
+- answerA: `Brown` (string) - One of the possible answers
+- answerB: `Red` (string) - One of the possible answers
+- answerC: `White` (string) - One of the possible answers
+- answerD: `Unicorn` (string) - One of the possible answers
+- answerE: `Pink` (string) - One of the possible answers
+- category: 1 (number) - The id of the category (MUST be either 0, 1, 2, 3, 4, 5)
+- level: 300 (number) - The level of difficulty of the question (MUST be either 200, 300 or 400)
+- correctAnswer: `A` (string) - The correct answer for the question (MUST be either A, B, C, D, E)
+
+## queryGood (object)
+- status : true (boolean)
+- message : `query good` (string)

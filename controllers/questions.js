@@ -14,14 +14,14 @@ module.exports = (dataLoader) => {
 
   questionController.post('/', onlyAdmin, (req, res) => {
     dataLoader.insertQuestion(req.body)
-      .then(data => res.status(201).json(data))
+      .then(data => res.status(201).json({ status: true, message: "query good" }))
       .catch(() => res.status(400).json({ error: 'Something went wrong when inserting to database' }));
   })
 
   questionController.delete('/', onlyAdmin, (req, res) => {
     dataLoader.deleteQuestion(req.body)
-      .then(data => res.status(200).json(data))
-      .catch(() => res.status(400).json({error: 'Something went wrong when deleting to database' }));
+      .then(data => res.status(200).json({ status: true, message: "query good" }))
+      .catch(() => res.status(400).json({ error: 'Something went wrong when deleting to database' }));
   })
 
   return questionController;

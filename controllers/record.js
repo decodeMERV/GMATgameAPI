@@ -18,7 +18,8 @@ module.exports = (dataLoader) => {
     category: req.body.category,
     answer: req.body.answer,
     level: req.body.level,
-    score: req.body.score
+    score: req.body.score,
+    time: req.body.time
   })
     .then(data => res.status(201).json(data))
 .catch(err => util.sendErrorResponse(res, err));
@@ -28,9 +29,15 @@ module.exports = (dataLoader) => {
   recordController.get('/leaders', (req, res) => {
 
     dataLoader.getLeaders()
-    .then(data => res.json(data))
-.catch(err => util.sendErrorResponse(res, err));
-});
+      // .then((res) => {
+      //   const obj = {};
+      //   obj.leaders = res;
+      //
+      //   return obj;
+      // })
+      .then(data => res.json(data))
+      .catch(err => res.status(400).json(err));
+  });
 
   return recordController;
 };

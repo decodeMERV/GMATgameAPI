@@ -29,9 +29,15 @@ module.exports = (dataLoader) => {
   recordController.get('/leaders', (req, res) => {
 
     dataLoader.getLeaders()
-    .then(data => res.json(data))
-.catch(err => util.sendErrorResponse(res, err));
-});
+      // .then((res) => {
+      //   const obj = {};
+      //   obj.leaders = res;
+      //
+      //   return obj;
+      // })
+      .then(data => res.json(data))
+      .catch(err => res.status(400).json(err));
+  });
 
   return recordController;
 };

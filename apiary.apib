@@ -15,11 +15,23 @@ A question represents a flashcard composed of a question followed by 5 answers t
     - isCorrect: `true` (boolean, required) - The status of the user's answer
 
 + Response 200 (application/json)
-    + Headers
-
-            Authorization: token xyz
 
     + Attributes (singleQuestion)
+
+### Retrieve a number of questions [GET /arrayQuestions{?fromId,limit,categoryId,level}]
+
++ Parameters
+    - fromId: `1` (number, required) - Start the return of the array of questions at this Id. By default this will return a limit of 20 questions if limit is not specified.
+    - limit: `10` (number, optional) - Return a specified number (UP TO) of rows
+    - categoryId: `1` (number, optional) - The corresponding category Id to denote a specific type of question. For example: 1 corresponds to Math problems.
+    - level: '200' (string, optional) - Denote this to filter the corresponding level of difficulty.
+
++ Response 200 (application/json)
+
+    + Attributes
+        + questions (array)
+            + (singleQuestion)
+            + (singleQuestion)
 
 ### Create a new question [POST /question]
 + Request (application/json)
@@ -89,7 +101,7 @@ Requesting this endpoint with an Authorization token will return the user that t
 - answerD: `value for answer D` (string) - One of the possible answers
 - answerE: `value for answer E` (string) - One of the possible answers
 - category: 1 (number) - The id of the category
-- level: 300 (number) - The level of difficulty of the question
+- level: 300 (string) - The level of difficulty of the question
 - correctAnswer: `A` (string) - The correct answer for the question
 - include Timestamps
 
@@ -122,7 +134,7 @@ Requesting this endpoint with an Authorization token will return the user that t
 - answerD: `Unicorn` (string) - One of the possible answers
 - answerE: `Pink` (string) - One of the possible answers
 - category: 1 (number) - The id of the category (MUST be either 0, 1, 2, 3, 4, 5)
-- level: 300 (number) - The level of difficulty of the question (MUST be either 200, 300 or 400)
+- level: 300 (string) - The level of difficulty of the question (MUST be either 200, 300 or 400)
 - correctAnswer: `A` (string) - The correct answer for the question (MUST be either A, B, C, D, E)
 
 ## queryGood (object)

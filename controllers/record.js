@@ -18,7 +18,8 @@ module.exports = (dataLoader) => {
     category: req.body.category,
     answer: req.body.answer,
     level: req.body.level,
-    score: req.body.score
+    score: req.body.score,
+    time: req.body.time
   })
     .then(data => res.status(201).json(data))
 .catch(err => util.sendErrorResponse(res, err));

@@ -44,6 +44,16 @@ A question represents a flashcard composed of a question followed by 5 answers t
 + Response 201 (application/json)
     + Attributes (queryGood)
 
+### Delete question [DELETE /question]
++ Request (application/json)
+    + Headers
+
+            Authorization: token xyz
+    + Attributes (delQuestion)
+
++ Response 201 (application/json)
+    + Attributes (queryGood)
+
 ## Authentication [/auth]
 
 ### Create a new user (signup) [POST /auth/users]
@@ -140,3 +150,6 @@ Requesting this endpoint with an Authorization token will return the user that t
 ## queryGood (object)
 - status : true (boolean)
 - message : `query good` (string)
+
+## delQuestion (object)
+- id: 10 (number) - id of the question you wish to be deleted

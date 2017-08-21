@@ -18,9 +18,9 @@ const recordController = require('./controllers/record.js');
 // Database / data loader initialization with SQL
 const connection = mysql.createPool({
   user: 'root',
-  password: 'root', //for testing purposes, change this info to your local SQL password
+  password: 'root',
   database: 'gmax'
-  //debug: true
+  // debug: true
 });
 
 const dataLoader = new GmaxDataLoader(connection);

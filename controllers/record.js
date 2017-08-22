@@ -5,7 +5,8 @@ const onlyLoggedIn = require('../lib/only-logged-in');
 module.exports = (dataLoader) => {
   const recordController = express.Router();
 
-  recordController.post('/recorder',(req, res) => {
+  recordController.post('/recorder', onlyLoggedIn, (req, res) => {
+
     dataLoader.recordQuestion({
       username: req.body.username,
       questionId: req.body.questionId,
@@ -19,7 +20,6 @@ module.exports = (dataLoader) => {
     .then(data => res.status(201).json(data))
     .catch(err => util.sendErrorResponse(res, err));
   });
-
 
   recordController.get('/leaders', (req, res) => {
     dataLoader.getLeaders()

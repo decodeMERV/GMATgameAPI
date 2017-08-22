@@ -52,5 +52,16 @@ module.exports = (dataLoader) => {
     }
   });
 
+  // Update user profile
+  authController.patch('/me', onlyLoggedIn, (req, res) => {
+    dataLoader.getProfileUpdate({
+      username: req.body.username,
+      email: req.body.email,
+      interests: req.body.interests
+    }, req.body.token)
+    .then(user => res.status(201).json(user))
+    .catch(err => util.sendErrorResponse(res, err));
+  });
+
   return authController;
 };

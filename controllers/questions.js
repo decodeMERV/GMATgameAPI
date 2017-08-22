@@ -6,8 +6,7 @@ module.exports = (dataLoader) => {
   const questionController = express.Router();
 
   questionController.get('/nextQuestion', (req, res) => { //should we put questions/nextQuestion bc *index.js line 44
-
-    dataLoader.getNextQuestion(req.query.currentLevel, req.query.isCorrect === 'true' ? true : req.query.isCorrect === 'false' ? false : undefined)
+    dataLoader.getNextQuestion(req.query.currentLevel, req.query.isCorrect === 'true' ? true : req.query.isCorrect === 'false' ? false : undefined, req.user.username)
       .then(data => res.json(data))
       .catch(err => util.sendErrorResponse(res, err));
   });

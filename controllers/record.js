@@ -7,7 +7,7 @@ module.exports = (dataLoader) => {
   const recordController = express.Router();
 
 
-  recordController.post('/recorder',(req, res) => {
+  recordController.post('/recorder', onlyLoggedIn, (req, res) => {
 
     console.log("req.body", req.body)
 

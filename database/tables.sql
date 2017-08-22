@@ -64,3 +64,4 @@ CREATE TABLE leader_board (
 );
 
 
+ALTER TABLE leader_board ADD COLUMN time INT AFTER score;

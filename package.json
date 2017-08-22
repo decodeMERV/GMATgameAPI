@@ -50,7 +50,9 @@
       "linebreak-style": 0,
       "quotes": 0,
       "spaced-comment": 0,
-      "key-spacing": 0
+      "key-spacing": 0,
+      "newline-per-chained-call": 0,
+      "no-trailing-spaces": 0
     }
   }
 }

@@ -20,7 +20,6 @@ const connection = mysql.createPool({
   user: 'root',
   password: 'root',
   database: 'gmax'
-  // debug: true
 });
 
 const dataLoader = new GmaxDataLoader(connection);

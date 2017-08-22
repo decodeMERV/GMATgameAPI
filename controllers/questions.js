@@ -24,9 +24,9 @@ module.exports = (dataLoader) => {
       .catch(() => res.status(400).json({ error: 'Something went wrong when deleting to database' }));
   })
 
-  questionController.get(`/arrayQuestions`, onlyAdmin, (req, res) => {
+  questionController.get(`/`, onlyAdmin, (req, res) => { // We could make a series of checks here like type and string length
     console.log(req.query);
-    dataLoader.getArrayOfQuestions(req.query.fromId, req.query.limit, req.query.categoryId, req.query.level)
+    dataLoader.getArrayOfQuestions(req.query.rowOffset, req.query.limit, req.query.categoryId, req.query.level)
       .then(data => res.status(200).json(data))
       .catch(err => util.sendErrorResponse(res, err));
   })

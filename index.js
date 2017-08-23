@@ -1,6 +1,7 @@
 const express = require('express');
 const mysql = require('promise-mysql');
 const cors = require('cors');
+require('dotenv').config();
 
 // Express middleware
 const bodyParser = require('body-parser');
@@ -18,7 +19,7 @@ const recordController = require('./controllers/record.js');
 // Database / data loader initialization with SQL
 const connection = mysql.createPool({
   user: 'root',
-  password: 'Alwaysbecrushing123',
+  password: process.env.MYSQL_PASS,
   database: 'gmax'
   // debug: true
 });

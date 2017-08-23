@@ -5,7 +5,7 @@ const onlyAdmin = require('../lib/only-admin');
 module.exports = (dataLoader) => {
   const questionController = express.Router();
 
-  questionController.get('/nextQuestion', (req, res) => { //should we put questions/nextQuestion bc *index.js line 44
+  questionController.get('/nextQuestion', (req, res) => {
 
     dataLoader.getNextQuestion(req.query.currentLevel, req.query.isCorrect === 'true' ? true : req.query.isCorrect === 'false' ? false : undefined)
       .then(data => res.json(data))

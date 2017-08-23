@@ -19,6 +19,7 @@
     "bcrypt-as-promised": "^1.1.0",
     "body-parser": "^1.15.2",
     "cors": "^2.8.4",
+    "dotenv": "^4.0.0",
     "elasticsearch": "^13.3.1",
     "express": "^4.14.0",
     "get-json": "0.0.3",
@@ -48,7 +49,7 @@
       "object-shorthand": 0,
       "arrow-body-style": 0,
       "linebreak-style": 0,
-      "quotes" : 0,
+      "quotes": 0,
       "spaced-comment": 0,
       "key-spacing": 0
     }

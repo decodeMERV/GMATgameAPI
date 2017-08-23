@@ -45,6 +45,7 @@ app.use('/auth', authController(dataLoader));
 app.use('/questions', questionController(dataLoader));
 app.use('/record', recordController(dataLoader));
 
+
 // Start the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

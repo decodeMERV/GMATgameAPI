@@ -13,13 +13,13 @@ module.exports = (dataLoader) => {
 
   questionController.post('/', onlyAdmin, (req, res) => {
     dataLoader.insertQuestion(req.body)
-      .then(data => res.status(201).json({ status: true, message: "query good" }))
+      .then(data => res.status(201).json({ status: true, message: "Success - Questions Updated!" }))
       .catch(() => res.status(400).json({ error: 'Something went wrong when inserting to database' }));
   });
 
   questionController.delete('/', onlyAdmin, (req, res) => {
     dataLoader.deleteQuestion(req.body)
-      .then(data => res.status(200).json({ status: true, message: "query good" }))
+      .then(data => res.status(200).json({ status: true, message: "Success - Question Deleted!" }))
       .catch(() => res.status(400).json({ error: 'Something went wrong when deleting to database' }));
   });
 

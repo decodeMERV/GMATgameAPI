@@ -14,7 +14,10 @@ module.exports = (dataLoader) => {
       interests: req.body.interests
     })
     .then(user => res.status(201).json(user))
-    .catch(err => util.sendErrorResponse(res, err));
+    .catch((error) => {
+      console.log(error, "the error in auth.js");
+      res.status(400).json(error)
+    });
   });
 
 
